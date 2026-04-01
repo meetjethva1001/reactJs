@@ -3,49 +3,66 @@
 import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
 import Cards from "./components/Cards"
+import { useState } from "react"
 
 function App() {
   interface User {
+    id : number |null,
     name: string | null,
     email: string | null,
     age: number | null
   }
   let userObj: User[] = [
     {
+      id:1,
       name: 'Alice',
       email: 'alice@company.com',
       age: 44
     },
     {
+      id:2,
       name: 'korel',
       email: 'korel@company.com',
       age: 33
     },
     {
+      id:3,
       name: 'john',
       email: 'john@company.com',
       age: 78
     },
     {
+      id:4,
       name: 'dolor',
       email: 'dolor@company.com',
       age: 22
     },
-     {
+    {
+      id:5,
       name: 'virol',
       email: 'virol@company.com',
       age: 72
     }
   ]
+  const [item, setItem] = useState(userObj)
+
+  function deleteHandle(id: number | null): void {
+    console.log("hit",id)
+    let updatedUsers = item.filter(items => items.id !== id);
+    setItem(updatedUsers);
+  }
   return (
     <>
       <Navbar />
       <div className="flex justify-around mt-3 flex-wrap gap-6">
-        {userObj?.map((users, index) => <Cards
+        {item?.map((users, index) => <Cards
           key={index}
+          id={users.id}
           name={users.name}
           email={users.email}
-          age={users.age} />
+          age={users.age}
+          onDelete={deleteHandle}
+        />
         )}
       </div>
       <Footer />
