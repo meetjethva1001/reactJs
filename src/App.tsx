@@ -51,6 +51,7 @@ function App() {
     let updatedUsers = item.filter(items => items.id !== id);
     setItem(updatedUsers);
   }
+  
   return (
     <>
       <Navbar />

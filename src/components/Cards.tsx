@@ -18,21 +18,22 @@ export default function Cards({ id , name, email, age, onDelete }: CardProps) {
         />
       </div>
 
-      <div className="p-4">
-        <h2 className="text-xl font-bold mb-2">{name}</h2>
+      <div className="p-4">git 
+        <h2 className="text-xl font-bold mb-2">{name}</h2>  
 
         <p className="text-gray-700 mb-4">
           <b>ID : </b>{id} <br />
           <b>EMAIL : </b>{email} <br />
           <b>AGE : </b>{age}
         </p>
-
+    <div className="flex justify-center">
         <button
-          className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 transition-colors cursor-pointer"
+          className="bg-red-500  text-white px-3 py-1 rounded hover:bg-red-700 transition-colors cursor-pointer"
           onClick={() => onDelete(id)}
         >
           Delete
         </button>
+    </div>
       </div>
     </div>
   );
