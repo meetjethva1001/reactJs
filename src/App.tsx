@@ -9,6 +9,7 @@ import Forms from "./components/Forms"
 import { Routes, Route } from 'react-router-dom'
 import APIs from "./components/APIs"
 import Loader from "./components/Loader"
+import HookForm from "./hooks/HookForm"
 
 function App() {
   interface User {
@@ -58,7 +59,7 @@ function App() {
     setItem(updatedUsers);
   }
   function unMountingComponent() {
-    setIsTrue(false)
+    setIsTrue(false);
   }
 
   return (
@@ -79,6 +80,7 @@ function App() {
         <Route path="/form" element={<Forms />} />
         <Route path="/apis" element={<APIs/>}/>
         <Route path="/loader" element={<Loader/>}/>
+        <Route path="/form-hook" element={<HookForm/>}/>
       </Routes>
 
 

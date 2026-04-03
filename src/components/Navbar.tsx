@@ -27,6 +27,9 @@ export default function Navbar({ onClickUnmount }: any) {
                     <Link to="/apis" className="hover:text-gray-400 transition-colors">
                         APIs
                     </Link>
+                    <Link to="/form-hook" className="hover:text-gray-400 transition-colors">
+                        Form-Hook
+                    </Link>
                 </nav>
                 <div className="btns flex gap-5">
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => incrementCount()}>Inc +</button>

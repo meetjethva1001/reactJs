@@ -9,7 +9,6 @@ export default function APIs() {
     }
     const [users, setUsers] = useState<Users[]>([])
     const [recive, setReceive] = useState(true);
-    const [search, setSearch] = useState("")
     const [filterdUsers , setFilteredUsers] = useState<Users[]>([])
 
     async function getApiData(): Promise<void> {
@@ -40,7 +39,6 @@ export default function APIs() {
     }
 
     function handleChange(e :any){
-            setSearch(e.target.value)
             debounceFunc(e.target.value)
     }
 
