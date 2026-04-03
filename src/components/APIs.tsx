@@ -2,51 +2,89 @@ import { useEffect, useState } from "react"
 import Loader from "./Loader";
 
 export default function APIs() {
-    const [users, setUsers] = useState([])
-    const [recive , setReceive] = useState(true);
+    interface Users{
+        name : string,
+        email : string,
+        phone : number
+    }
+    const [users, setUsers] = useState<Users[]>([])
+    const [recive, setReceive] = useState(true);
+    const [search, setSearch] = useState("")
+    const [filterdUsers , setFilteredUsers] = useState<Users[]>([])
 
-    async function getApiData() {
+    async function getApiData(): Promise<void> {
         const response = await fetch('https://jsonplaceholder.typicode.com/users')
         if (!response.ok) throw new Error
         let res = await response.json()
         setUsers(res)
+        setFilteredUsers(res)
         setReceive(false)
     }
     useEffect(() => {
         getApiData()
     }, [])
 
+    // function handleInput(e: KeyboardEvent): void {
+    //     let target = e.target as HTMLInputElement;
+    //     console.log(target.value)
+    // }
+
+    function debounce(func: Function, delay: number) {
+        let timerId: number | undefined;
+        return function (e: KeyboardEvent) {
+            clearTimeout(timerId)
+            timerId = setTimeout(() => {
+                func(e)
+            }, delay)
+        }
+    }
+
+    function handleChange(e :any){
+            setSearch(e.target.value)
+            debounceFunc(e.target.value)
+    }
+
+    const debounceFunc = debounce(function filterValues(value : string){
+            const filter = users.filter(user => user?.name.toLowerCase().includes(value.toLocaleLowerCase()) )
+            setFilteredUsers(filter)
+    } , 600)
+   
 
     return (
         <>
-            <div className="flex justify-around items-center min-h-screen flex-wrap gap-6 mt-6">
+            <div className="flex items-center justify-center mt-5 ">
+                <input className='border text-gray-600 px-2 py-1 rounded border-gray-400' type="text" placeholder="Search..." 
+                onChange={handleChange}
+                />
+            </div>
+            <div className="flex justify-around items-center h-180 flex-wrap gap-2 mt-6">
                 {
-                    recive ? <Loader/> :
-                    users.length <= 0 ? 'No users Found!!' : users?.map((user : any, index : number)   => {
-                        return (
-                            
-                            <div key={index} className="bg-white shadow-lg rounded-2xl p-5 w-80">
+                    recive ? <Loader /> :
+                        filterdUsers.length <= 0 ? 'No users Found!!' : filterdUsers?.map((user: any, index: number) => {
+                            return (
 
-                                <img
-                                    src="/src/assets/user.png"
-                                    alt="card"
-                                    className="rounded-xl mb-2 w-32 mx-auto"
-                                />
+                                <div key={index} className="bg-white shadow-lg rounded-2xl p-5 w-80">
 
-                                <h2 className="text-xl font-bold mb-2">{user?.name}</h2>
+                                    <img
+                                        src="/src/assets/user.png"
+                                        alt="card"
+                                        className="rounded-xl mb-2 w-32 mx-auto"
+                                    />
 
-                                <p className="text-gray-600 mb-4">
-                                   <strong>Email : </strong>{user?.email} <br />
-                                   <strong>Phone :</strong>{user?.phone}
-                                </p>
+                                    <h2 className="text-xl font-bold mb-2">{user?.name}</h2>
 
-                                {/* <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+                                    <p className="text-gray-600 mb-4">
+                                        <strong>Email : </strong>{user?.email} <br />
+                                        <strong>Phone :</strong>{user?.phone}
+                                    </p>
+
+                                    {/* <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
                                     Read More
                                 </button> */}
 
-                            </div>
-                        )
-                    })
+                                </div>
+                            )
+                        })
                 }
 
             </div>
