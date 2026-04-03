@@ -4,69 +4,88 @@ import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
 import Cards from "./components/Cards"
 import { useState } from "react"
+import CleanUp from "./hooks/CleanUp"
+import Forms from "./components/Forms"
+import { Routes, Route } from 'react-router-dom'
+import APIs from "./components/APIs"
+import Loader from "./components/Loader"
 
 function App() {
   interface User {
-    id : number |null,
+    id: number | null,
     name: string | null,
     email: string | null,
     age: number | null
   }
   let userObj: User[] = [
     {
-      id:1,
+      id: 1,
       name: 'Alice',
       email: 'alice@company.com',
       age: 44
     },
     {
-      id:2,
+      id: 2,
       name: 'korel',
       email: 'korel@company.com',
       age: 33
     },
     {
-      id:3,
+      id: 3,
       name: 'john',
       email: 'john@company.com',
       age: 78
     },
     {
-      id:4,
+      id: 4,
       name: 'dolor',
       email: 'dolor@company.com',
       age: 22
     },
     {
-      id:5,
+      id: 5,
       name: 'virol',
       email: 'virol@company.com',
       age: 72
     }
   ]
   const [item, setItem] = useState(userObj)
+  const [isTrue, setIsTrue] = useState(true)
 
   function deleteHandle(id: number | null): void {
-    console.log("hit",id)
+    console.log("hit", id)
     let updatedUsers = item.filter(items => items.id !== id);
     setItem(updatedUsers);
   }
-  
+  function unMountingComponent() {
+    setIsTrue(false)
+  }
+
   return (
     <>
-      <Navbar />
-      <div className="flex justify-around mt-3 flex-wrap gap-6">
-        {item?.map((users, index) => <Cards
-          key={index}
-          id={users.id}
-          name={users.name}
-          email={users.email}
-          age={users.age}
-          onDelete={deleteHandle}
-        />
-        )}
-      </div>
-      <Footer />
+      <Navbar onClickUnmount={unMountingComponent} />
+      <Routes>
+        <Route path="/" element={<div className="flex justify-around mt-3 flex-wrap gap-6">
+          {isTrue && item?.map((users, index) => <Cards
+            key={index}
+            id={users.id}
+            name={users.name}
+            email={users.email}
+            age={users.age}
+            onDelete={deleteHandle}
+          />
+          )}
+        </div>} />
+        <Route path="/form" element={<Forms />} />
+        <Route path="/apis" element={<APIs/>}/>
+        <Route path="/loader" element={<Loader/>}/>
+      </Routes>
+
+
+      {/* <CleanUp/> */}
+
+
+      {/* <Footer /> */}
     </>
   )
 }
