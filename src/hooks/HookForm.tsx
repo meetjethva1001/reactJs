@@ -41,7 +41,7 @@ export default function HookForm() {
     console.log("user: ", users)
     return (
         <>
-            <div className="flex items-center justify-center h-105 ">
+            <div className="flex items-center justify-center h-120 ">
                 <form className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm" onSubmit={handleSubmit(submitHandler)}>
                     <h2 className="text-2xl font-bold mb-4 text-gray-800">Sign Up</h2>
 
