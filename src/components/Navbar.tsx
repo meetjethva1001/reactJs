@@ -12,10 +12,10 @@ export default function Navbar({ onClickUnmount }: any) {
     }
 
     return (
-        <nav className="bg-gray-700 text-white">
+        <nav className="bg-white-800 text-white">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-4">
                 {/* Brand */}
-                <Link to={'/'} className="text-xl font-bold">
+                <Link to={'/'} className="text-2xl text-gray-400 font-bold">
                     cyruS
                 </Link>
 
@@ -30,12 +30,15 @@ export default function Navbar({ onClickUnmount }: any) {
                     <Link to="/form-hook" className="hover:text-gray-400 transition-colors">
                         Form-Hook
                     </Link>
+                    <Link to="/blogs" className="hover:text-gray-400 transition-colors">
+                        Blogs
+                    </Link>
                 </nav>
                 <div className="btns flex gap-5">
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => incrementCount()}>Inc +</button>
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => decrementCount()}>Dec -</button>
                     <button className="bg-gray-500 px-3 py-1 rounded">{count}</button>
-                    <button className="px-4 py-1 bg-gray-800 rounded text-gray-400 hover:cursor-pointer" onClick={() => onClickUnmount()}>Unmount component</button>
+                    <button className="px-4 py-1 bg-indigo-300 rounded text-white-400 hover:cursor-pointer" onClick={() => onClickUnmount()}>Unmount component</button>
                 </div>
             </div>
         </nav>

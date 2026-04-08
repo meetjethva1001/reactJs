@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "title": "Designing Modern UI",
+    "desc": "Learn how to build clean and modern user interfaces.",
+    "content": "Modern UI design focuses on simplicity, consistency, and usability. Use proper spacing, typography, and colors to create engaging interfaces. Always prioritize user experience and accessibility.",
+    "category": "Design",
+    "author": "John Doe",
+    "date": "March 20, 2026",
+    "color": "bg-indigo-300",
+    "readTime": "5 min read",
+    "img": "https://imgs.search.brave.com/t01aq2tN7d4UaAbgRIQp0GlZTAf9U7Wq00Y-sw9ZKm4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTA1/OTkzMDc3Mi92ZWN0/b3IvdmVjdG9yLWJs/YWNrLXBpY3R1cmUt/ZnJhbWUtc2V0LW9u/LXdhbGwtYmFja2dy/b3VuZC5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9cmh5d3lx/YXpDc2hISTJJak1m/SXZfaHowUXM0aUg3/dXlnbU5mN2lDTVh6/dz0"
+  },
+  {
+    "id": 2,
+    "title": "React Best Practices",
+    "desc": "Write scalable and maintainable React applications.",
+    "content": "React applications should be modular and reusable. Use hooks effectively, manage state wisely, and keep components small and focused for better maintainability.",
+    "category": "Development",
+    "author": "Alice Smith",
+    "date": "March 18, 2026",
+    "color": "bg-olive-300",
+    "readTime": "6 min read",
+    "img": "https://imgs.search.brave.com/GeOG9f7TQGl0z6K9UfxDhR0XJa8e0OEcxRc80gfnlgY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YW1iaWVudC1pdC5u/ZXQvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjIvMDMvUmVhY3Qt/SW1hZ2UucG5n"
+  },
+  {
+    "id": 3,
+    "title": "Tailwind CSS Tips",
+    "desc": "Speed up your UI development with Tailwind.",
+    "content": "Tailwind CSS helps you build designs quickly using utility classes. Focus on responsive design, reuse components, and maintain consistency in spacing and colors.",
+    "category": "CSS",
+    "author": "Robert Brown",
+    "date": "March 15, 2026",
+    "color": "bg-green-300",
+    "readTime": "4 min read",
+    "img": "https://imgs.search.brave.com/BWnEZg1kM_osR8WHxwWgeJ4XG1UeleneT8kLrj6DwGI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxzYWNyZWF0aW9u/cy5jb20veG1lZGlh/L2RvYy9vcmlnaW5h/bC8xNjA1NzgxMzA1/LXRhaWx3aW5kLXBs/YXkucG5n"
+  },
+  {
+    "id": 4,
+    "title": "Mastering JavaScript",
+    "desc": "Deep dive into advanced JavaScript concepts.",
+    "content": "Understanding closures, promises, and async/await is key to mastering JavaScript. Practice real-world problems and write clean, readable code.",
+    "category": "JavaScript",
+    "author": "Emily Davis",
+    "date": "March 12, 2026",
+    "color": "bg-orange-300",
+    "readTime": "7 min read",
+    "img": "https://imgs.search.brave.com/LqldlIL0GhPMMZY6HuG0y9-DAv0bCDQrYFFgNQEdMO8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzc1LzkyLzIz/LzM2MF9GXzc1OTIy/MzMyX1Y4amlKOUky/RjlkOUhxVjdSdFB6/VUF4cjVzN1lIV09k/LmpwZw"
+  },
+  {
+    "id": 5,
+    "title": "Building REST APIs",
+    "desc": "Learn how to design scalable APIs.",
+    "content": "REST APIs should follow proper naming conventions and use HTTP methods correctly. Ensure proper error handling and authentication mechanisms.",
+    "category": "Backend",
+    "author": "Michael Lee",
+    "date": "March 10, 2026",
+    "color": "bg-gray-300",
+    "readTime": "6 min read",
+    "img": "https://imgs.search.brave.com/4Z3wNDOqHV1CGvjf5OH-0b4cDHOgUgMhTlHQ7TZBT3M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9taXJv/Lm1lZGl1bS5jb20v/djIvMSpLNGlFZFMt/VGJLZk0xdWIzYWlO/MGlnLnBuZw"
+  },
+  {
+    "id": 6,
+    "title": "Frontend Performance",
+    "desc": "Optimize your frontend apps for speed.",
+    "content": "Improve performance by lazy loading components, optimizing images, and minimizing unnecessary re-renders in your application.",
+    "category": "Performance",
+    "author": "Sophia Wilson",
+    "date": "March 8, 2026",
+    "color": "bg-red-300",
+    "readTime": "5 min read",
+    "img": "https://imgs.search.brave.com/ztKZtSO34BKAilL-eiulfV9hB0bSrrtFNlsRatvn4r8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wZmxi/LnVzL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDE5LzA4L2hvdy1k/by1idXNpbmVzc2Vz/LWJlbmVmaXQtZnJv/bS1mcm9udGVuZC1w/ZXJmb3JtYW5jZS10/ZXN0aW5nLTIuc3Zn"
+  },
+  {
+    "id": 7,
+    "title": "UI/UX Fundamentals",
+    "desc": "Understand core UX principles.",
+    "content": "Good UX design focuses on user needs, clarity, and accessibility. Use feedback, consistency, and intuitive navigation to enhance user satisfaction.",
+    "category": "UX",
+    "author": "David Clark",
+    "date": "March 5, 2026",
+    "color": "bg-purple-300",
+    "readTime": "5 min read",
+    "img": "https://imgs.search.brave.com/zBMrK2yzYbJnFvtNydMSnY2PuRgu8RF6toxA8L22Qbo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMjEx/NDE0MTY1MS92ZWN0/b3IvdWktYW5kLXV4/LWRlc2lnbi1jb25j/ZXB0LW1vYmlsZS1h/cHBsaWNhdGlvbnMt/ZGV2ZWxvcG1lbnQt/bW9iaWxlLWFwcGxp/Y2F0aW9uLWludGVy/ZmFjZS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9d19ndGwz/VnpGVm0xcGg0MHgz/RUZQVHZQWk5OeTRZ/OW54d0pXVzF3R1Fr/ST0"
+  },
+  {
+    "id": 8,
+    "title": "Git & Version Control",
+    "desc": "Master Git workflows and collaboration.",
+    "content": "Git helps track changes and collaborate efficiently. Learn branching strategies, pull requests, and conflict resolution for better teamwork.",
+    "category": "Tools",
+    "author": "Olivia Martin",
+    "date": "March 2, 2026",
+    "color": "bg-yellow-200",
+    "readTime": "4 min read",
+    "img": "https://imgs.search.brave.com/mRkN1atPGpdONybb7KusWvT68wOro7LGMDIpY1_kuQY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/aWNvbnM4LmNvbS9i/dWJibGVzLzEyMDAv/Z2l0aHViLmpwZw"
+  }
+]
