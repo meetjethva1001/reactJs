@@ -46,7 +46,7 @@ export default function BlogInformation() {
         }
     }
 
-    useEffect(() => {
+    useEffect(() => {  
         getJsonData();
     }, [bid]);
 
@@ -105,7 +105,9 @@ export default function BlogInformation() {
                 {/* Blog Content */}
                 <div className="prose prose-indigo max-w-none text-gray-700 leading-relaxed">
                     {/* Use blog.content if it's HTML, or split if it's plain text */}
-                    <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+                    <div className="prose prose-indigo max-w-full text-gray-700">
+                        <p>{blog.content}</p>
+                    </div>
 
                     {/* Fallback if content is plain text and you want to keep your static example */}
                     {/* 

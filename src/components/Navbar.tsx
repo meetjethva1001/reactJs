@@ -12,7 +12,7 @@ export default function Navbar({ onClickUnmount }: any) {
     }
 
     return (
-        <nav className="bg-white-800 text-white">
+        <nav className="bg-white-800 text-gray-700">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-4">
                 {/* Brand */}
                 <Link to={'/'} className="text-2xl text-gray-400 font-bold">

@@ -16,16 +16,16 @@ export default function Blogs() {
     }
 
     async function getJsonData(): Promise<void> {
-        const response = await fetch("/public/data/blogs.json")
+        const response = await fetch("/data/blogs.json")
         if (response.status != 200) throw new Error;
         const res = await response.json()
         setBlogs(res)
     }
-    
+
     useEffect(() => {
         getJsonData()
     }, [])
-
+                        
     const [blogs, setBlogs] = useState<Blog[]>([])
     return (
         <>

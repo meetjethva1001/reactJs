@@ -12,6 +12,7 @@ import Loader from "./components/Loader"
 import HookForm from "./hooks/HookForm"
 import BlogInformation from "./components/BlogInformation"
 import Blogs from "./components/Blogs"
+import RefHook from "./hooks/RefHook"
 
 function App() {
   interface User {
@@ -85,6 +86,7 @@ function App() {
         <Route path="/form-hook" element={<HookForm/>}/>
         <Route path="/blogs" element={<Blogs/>}/>
         <Route path="/blog/:bid" element={<BlogInformation/>}/>
+        <Route path="/ref" element={<RefHook/>}/>
       </Routes>
 
 
