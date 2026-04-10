@@ -37,4 +37,4 @@ export default function Cards({ id , name, email, age, onDelete }: CardProps) {
       </div>
     </div>
   );
-}justify
+}

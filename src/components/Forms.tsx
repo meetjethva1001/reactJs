@@ -66,7 +66,7 @@ export default function Forms() {
           value={formData.education}
         />
         <br />
-        <input
+        <input 
           type="submit"
           value="Submit"
           className="bg-gray-700 text-gray-300 px-2 py-1 rounded mt-3 mx-auto cursor-pointer"

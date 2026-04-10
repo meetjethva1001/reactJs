@@ -13,8 +13,12 @@ import HookForm from "./hooks/HookForm"
 import BlogInformation from "./components/BlogInformation"
 import Blogs from "./components/Blogs"
 import RefHook from "./hooks/RefHook"
+import MemoHook from "./hooks/MemoHook"
+import CallbackHook from "./hooks/CallbackHook"
+
 
 function App() {
+
   interface User {
     id: number | null,
     name: string | null,
@@ -31,7 +35,7 @@ function App() {
     {
       id: 2,
       name: 'korel',
-      email: 'korel@company.com',
+      email: 'korel@company.com', 
       age: 33
     },
     {
@@ -87,6 +91,8 @@ function App() {
         <Route path="/blogs" element={<Blogs/>}/>
         <Route path="/blog/:bid" element={<BlogInformation/>}/>
         <Route path="/ref" element={<RefHook/>}/>
+        <Route path="/memo" element={<MemoHook/>}/>
+        <Route path="/call" element={<CallbackHook/>}/>
       </Routes>
 
 
