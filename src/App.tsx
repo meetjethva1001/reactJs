@@ -15,9 +15,10 @@ import Blogs from "./components/Blogs"
 import RefHook from "./hooks/RefHook"
 import MemoHook from "./hooks/MemoHook"
 import CallbackHook from "./hooks/CallbackHook"
+import ShowApiResponse from "./components/ShowApiResponse"
 
 
-function App() {
+function App() { 
 
   interface User {
     id: number | null,
@@ -93,6 +94,7 @@ function App() {
         <Route path="/ref" element={<RefHook/>}/>
         <Route path="/memo" element={<MemoHook/>}/>
         <Route path="/call" element={<CallbackHook/>}/>
+        <Route path="/show" element ={<ShowApiResponse/>}/>
       </Routes>
 
 
