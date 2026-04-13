@@ -1,8 +1,10 @@
 import { useForm } from 'react-hook-form'
 import { useContext } from "react";
 import { formContext } from "./FormContextData";
+import { useNavigate } from 'react-router-dom';
 
 export default function UserDetailForm() {
+    const naviate = useNavigate()
     interface User {
         name: string,
         email: string,
@@ -105,6 +107,7 @@ export default function UserDetailForm() {
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition hover:cursor-pointer"
+                        onClick={()=>naviate('/user-location')}
                     >
                         Next
                     </button>

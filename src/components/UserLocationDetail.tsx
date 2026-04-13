@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { useForm } from "react-hook-form"
+import { formContext } from "./FormContextData";
 
 export default function UserLocationDetail() {
     const { handleSubmit, register, formState: { errors } }: any | undefined = useForm()
@@ -23,15 +24,23 @@ export default function UserLocationDetail() {
             }
         }
     }
+    const context = useContext(formContext);
 
-    function submitHandler(data : any ){
-            console.log(data);
+    if (!context) {
+        throw new Error("formContext not found. Wrap in FormProvider");
     }
+
+    const { setUser, user } = context;
+
+    function submitHandler(data: any) {
+        setUser({...user , ...data})
+    }
+    console.log(user);
     return (
         <>
             <div className="min-h-screen flex items-center justify-center bg-gray-100">
                 <form className="bg-white p-6 rounded-2xl shadow-md w-full max-w-sm space-y-4"
-                onSubmit={handleSubmit(submitHandler)}
+                    onSubmit={handleSubmit(submitHandler)}
                 >
 
                     <h2 className="text-2xl font-bold text-center text-gray-800">
@@ -73,7 +82,7 @@ export default function UserLocationDetail() {
                             {...register("city", allValidators.cityValidator)}
                             className="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                         {errors.city && (<span className="text-xs text-red-600">{errors.city.message}</span>)}
+                        {errors.city && (<span className="text-xs text-red-600">{errors.city.message}</span>)}
                     </div>
 
 
