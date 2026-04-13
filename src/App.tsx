@@ -16,6 +16,7 @@ import RefHook from "./hooks/RefHook"
 import MemoHook from "./hooks/MemoHook"
 import CallbackHook from "./hooks/CallbackHook"
 import ShowApiResponse from "./components/ShowApiResponse"
+import { context } from "./components/ContextData"
 
 
 function App() { 
@@ -72,6 +73,7 @@ function App() {
  
   return (
     <>
+    <context.Provider value="cyrus">
       <Navbar onClickUnmount={unMountingComponent} />
       <Routes>
         <Route path="/" element={<div className="flex justify-around mt-3 flex-wrap gap-6">
@@ -102,6 +104,7 @@ function App() {
 
 
       {/* <Footer /> */}
+      </context.Provider>
     </>
   )
 }

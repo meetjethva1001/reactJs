@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { context } from '../components/ContextData'
 export default function HookForm() {
 
     interface Users {
@@ -39,6 +40,7 @@ export default function HookForm() {
         }
     }
     console.log("user: ", users)
+    const contextData = useContext(context)
     return (
         <>
             <div className="flex items-center justify-center h-120 ">
@@ -121,6 +123,7 @@ export default function HookForm() {
                     )
                 })
             }
+            {contextData}
         </div>
 
         </>
