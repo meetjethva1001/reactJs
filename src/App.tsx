@@ -69,7 +69,7 @@ function App() {
   function unMountingComponent() {
     setIsTrue(false);
   }
-
+ 
   return (
     <>
       <Navbar onClickUnmount={unMountingComponent} />
