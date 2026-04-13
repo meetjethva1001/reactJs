@@ -17,6 +17,9 @@ import MemoHook from "./hooks/MemoHook"
 import CallbackHook from "./hooks/CallbackHook"
 import ShowApiResponse from "./components/ShowApiResponse"
 import { context } from "./components/ContextData"
+import UserDetailForm from "./components/UserDetailForm"
+import { FormProvider } from "./components/FormContextData"
+import UserLocationDetail from "./components/UserLocationDetail"
 
 
 function App() { 
@@ -27,6 +30,17 @@ function App() {
     email: string | null,
     age: number | null
   }
+
+  interface formUser {
+    name : string,
+    email : string,
+    password :string,
+    county : string,
+    state : string,
+    city : string
+  }
+
+
   let userObj: User[] = [
     {
       id: 1,
@@ -70,10 +84,11 @@ function App() {
   function unMountingComponent() {
     setIsTrue(false);
   }
+
  
   return (
     <>
-    <context.Provider value="cyrus">
+    <FormProvider>
       <Navbar onClickUnmount={unMountingComponent} />
       <Routes>
         <Route path="/" element={<div className="flex justify-around mt-3 flex-wrap gap-6">
@@ -97,6 +112,8 @@ function App() {
         <Route path="/memo" element={<MemoHook/>}/>
         <Route path="/call" element={<CallbackHook/>}/>
         <Route path="/show" element ={<ShowApiResponse/>}/>
+        <Route path="/user-detail" element={<UserDetailForm/>}/>
+        <Route path="/user-location" element={<UserLocationDetail/>}/>
       </Routes>
 
 
@@ -104,7 +121,7 @@ function App() {
 
 
       {/* <Footer /> */}
-      </context.Provider>
+    </FormProvider>
     </>
   )
 }
