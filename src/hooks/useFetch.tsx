@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function useFetch(url: any) {
+export default function useFetch(url: string) {
     const [data, setData] = useState()
     const [loading, setLoading] = useState(false)
 
@@ -8,14 +8,14 @@ export default function useFetch(url: any) {
         try {
             const response = await fetch(url);
             if (!response.ok) throw new Error("Error occured while fetching Api response");
-            let res = await response.json()
+            let res = await response.json();
             setLoading(true);
-            setData(res)
+            setData(res);
         } catch (err) { console.warn("Error occured while fetching apis") }
 
     }
     useEffect(() => {
-        getApiResponse()
-    }, [url])
+        getApiResponse();
+    }, [url]);
     return { data, loading }
-}
+} 
