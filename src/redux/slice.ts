@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-     value : 0
+     products : []
 }
 
 //Create a slice 
@@ -10,8 +10,9 @@ const addToCart = createSlice({
     initialState , 
     reducers : {
         //Function name and pass argumant as state 
-        addItem : (state : any) =>{
-            state.value += 1;
+        addItem : (state : any , actions : any) =>{
+            state.products.push(actions.payload);
+            console.log("ac",actions);
         },
         removeItem : (state : any ) =>{
             state.value > 0 ? state.value -= 1 : 0;

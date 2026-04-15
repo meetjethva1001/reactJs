@@ -1,57 +1,80 @@
 import { useDispatch, useSelector } from "react-redux"
 import { addItem, removeItem } from "../redux/slice"
 import { fetchApiResponse } from "../redux/productSlice"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import type { AppDispatch } from "../redux/store"
+import Loader from "./Loader"
 
 export default function Product() {
+    const clcikCount = 1;
     const dispatch = useDispatch<AppDispatch>()
+
     useEffect(() => {
         dispatch(fetchApiResponse())
     }, [])
-    const selector = useSelector((state) =>{return state.product})
-    console.log(selector);
+
+    const {data , status } = useSelector((state : any  ) => { return state.product })
+    const res = data?.products;
+    const load = status
+    console.log(load);
+
     return (
         <>
-            <div className="flex items-center justify-center h-200">
-                <div className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
+        <div className="flex items-center justify-center w-full flex-wrap gap-5">
+            {
+               load ? <Loader/> :  res?.map((pro : any ,index : number ) => {
+                    return (
+                        <div key={index} className="w-full max-w-sm mx-auto bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden">
 
-                    {/* Product Image */}
-                    <img
-                        src="https://www.rado.com/media/sgecom_contentsystem/SEO_pages/Gold-watches/Gold_watches_Hero_2000X2320.jpg"
-                        alt="product"
-                        className="w-full h-56 object-cover"
-                    />
+                            {/* Image */}
+                            <div className="w-full h-56 bg-gray-100 flex items-center justify-center">
+                                    <img className='object-contain h-full w-full ' src={pro.images[0]} alt="image failed" />
+                            </div>
 
-                    {/* Content */}
-                    <div className="p-4">
-                        <h2 className="text-lg font-bold text-gray-800">
-                            Wireless Headphones
-                        </h2>
+                            {/* Content */}
+                            <div className="p-4 space-y-3">
 
-                        <p className="text-gray-500 text-sm mt-2">
-                            High-quality wireless headphones with noise cancellation and long battery life.
-                        </p>
+                                {/* Title */}
+                                <h2 className="text-lg font-semibold text-gray-800 line-clamp-2">
+                                    {pro.title}
+                                </h2>
 
-                        {/* Price + Button */}
-                        <div className="flex items-center justify-between mt-4">
-                            <span className="text-xl font-semibold text-green-600">
-                                ₹49,499
-                            </span>
+                                {/* Brand + Category */}
+                                <div className="flex items-center justify-between text-sm text-gray-500">
+                                    <span>{pro.brand}</span>
+                                    <span className="capitalize">{pro.category}</span>
+                                </div>
 
-                            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition hover:cursor-pointer"
-                                onClick={() => dispatch(addItem())}
-                            >
-                                Add to Cart
-                            </button>
-                            <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition hover:cursor-pointer"
-                                onClick={() => dispatch(removeItem())}
-                            >
-                                Remove Item
-                            </button>
+                                {/* Description */}
+                                <p className="text-sm text-gray-600 line-clamp-3">
+                                    {pro.description}
+                                </p>
+
+                                {/* Price + Stock */}
+                                <div className="flex items-center justify-between pt-2">
+                                    <span className="text-xl font-bold text-gray-900">${pro.price}</span>
+
+                                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-green-100 text-green-700">
+                                       {pro.availabilityStatus}
+                                    </span>
+                                </div>
+
+                                {/* Button */}
+                                <button className="w-full mt-3 bg-black text-white py-2 rounded-xl text-sm font-medium hover:bg-gray-800 transition hover:cursor-pointer"
+                                    onClick={() => dispatch(addItem(pro))}
+                                >
+                                    Add to Cart
+                                </button>
+                                <button className="w-full mt-3 bg-red-400 text-white py-2 rounded-xl text-sm font-medium hover:bg-red-500 transition hover:cursor-pointer"
+                                    onClick={() => dispatch(removeItem())}
+                                >
+                                    Remove Item
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    )
+                })
+            }
             </div>
         </>
     )
