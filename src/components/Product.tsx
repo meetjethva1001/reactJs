@@ -1,8 +1,16 @@
-import { useDispatch } from "react-redux"
-import { addItem , removeItem} from "../redux/slice"
+import { useDispatch, useSelector } from "react-redux"
+import { addItem, removeItem } from "../redux/slice"
+import { fetchApiResponse } from "../redux/productSlice"
+import { useEffect } from "react"
+import type { AppDispatch } from "../redux/store"
 
 export default function Product() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
+    useEffect(() => {
+        dispatch(fetchApiResponse())
+    }, [])
+    const selector = useSelector((state) =>{return state.product})
+    console.log(selector);
     return (
         <>
             <div className="flex items-center justify-center h-200">
