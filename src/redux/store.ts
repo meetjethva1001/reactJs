@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import  cartReducer from './slice'
+import productReducer from './productSlice'
 
 export const store = configureStore({
-    reducer : {cart : cartReducer} ,
+    reducer : {cart : cartReducer , 
+              product : productReducer }
+              
 })
 
 export type RootState = ReturnType<typeof store.getState>

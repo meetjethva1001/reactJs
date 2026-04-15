@@ -1,8 +1,16 @@
-import { useDispatch } from "react-redux"
-import { addItem } from "../redux/slice"
+import { useDispatch, useSelector } from "react-redux"
+import { addItem, removeItem } from "../redux/slice"
+import { fetchApiResponse } from "../redux/productSlice"
+import { useEffect } from "react"
+import type { AppDispatch } from "../redux/store"
 
 export default function Product() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
+    useEffect(() => {
+        dispatch(fetchApiResponse())
+    }, [])
+    const selector = useSelector((state) =>{return state.product})
+    console.log(selector);
     return (
         <>
             <div className="flex items-center justify-center h-200">
@@ -32,9 +40,14 @@ export default function Product() {
                             </span>
 
                             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition hover:cursor-pointer"
-                            onClick={() => dispatch(addItem())}
+                                onClick={() => dispatch(addItem())}
                             >
                                 Add to Cart
+                            </button>
+                            <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition hover:cursor-pointer"
+                                onClick={() => dispatch(removeItem())}
+                            >
+                                Remove Item
                             </button>
                         </div>
                     </div>
