@@ -20,6 +20,7 @@ import { context } from "./components/ContextData"
 import UserDetailForm from "./components/UserDetailForm"
 import { FormProvider } from "./components/FormContextData"
 import UserLocationDetail from "./components/UserLocationDetail"
+import Product from "./components/Product"
 
 
 function App() { 
@@ -114,6 +115,7 @@ function App() {
         <Route path="/show" element ={<ShowApiResponse/>}/>
         <Route path="/user-detail" element={<UserDetailForm/>}/>
         <Route path="/user-location" element={<UserLocationDetail/>}/>
+        <Route path="/product" element={<Product/>}/>
       </Routes>
 
 

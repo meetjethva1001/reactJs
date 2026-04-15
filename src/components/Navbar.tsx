@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import CartIcon from "./CartIcon";
+import { useSelector } from "react-redux";
 
 export default function Navbar({ onClickUnmount }: any) {
     const [count, setCount] = useState(0)
@@ -11,6 +13,8 @@ export default function Navbar({ onClickUnmount }: any) {
         count <= 0 ? 0 : setCount(count - 1)
     }
 
+    const selector = useSelector((state : any ) => state.cart)
+    console.log(selector);
     return (
         <nav className="bg-white-800 text-gray-700">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-4">
@@ -33,12 +37,16 @@ export default function Navbar({ onClickUnmount }: any) {
                     <Link to="/blogs" className="hover:text-gray-400 transition-colors">
                         Blogs
                     </Link>
+                    <Link to="/product" className="hover:text-gray-400 transition-colors">
+                        Shop
+                    </Link>
                 </nav>
                 <div className="btns flex gap-5">
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => incrementCount()}>Inc +</button>
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => decrementCount()}>Dec -</button>
                     <button className="bg-gray-500 px-3 py-1 rounded">{count}</button>
                     <button className="px-4 py-1 bg-indigo-300 rounded text-white-400 hover:cursor-pointer" onClick={() => onClickUnmount()}>Unmount component</button>
+                    <CartIcon value={selector.value}/>
                 </div>
             </div>
         </nav>
