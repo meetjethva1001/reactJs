@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const fetchApiResponse  =  createAsyncThunk('products' , async function() {
     try{
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const response = await fetch('https://dummyjson.com/products');
       const res = await response.json();
       return res;
     } catch(err) {throw new Error('Api error..')}
@@ -19,7 +19,7 @@ const productsSlices = createSlice({
     reducers : {} , 
     extraReducers : function (builder ){
         builder.addCase(fetchApiResponse.pending , (state) =>{
-            state.status= true;
+            state.status = false;
         })
         builder.addCase(fetchApiResponse.fulfilled , (state , actions) =>{
             state.data = actions.payload;
