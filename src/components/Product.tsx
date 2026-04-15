@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { addItem } from "../redux/slice"
+import { addItem , removeItem} from "../redux/slice"
 
 export default function Product() {
     const dispatch = useDispatch()
@@ -32,9 +32,14 @@ export default function Product() {
                             </span>
 
                             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition hover:cursor-pointer"
-                            onClick={() => dispatch(addItem())}
+                                onClick={() => dispatch(addItem())}
                             >
                                 Add to Cart
+                            </button>
+                            <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition hover:cursor-pointer"
+                                onClick={() => dispatch(removeItem())}
+                            >
+                                Remove Item
                             </button>
                         </div>
                     </div>

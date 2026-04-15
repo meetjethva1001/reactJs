@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import CartIcon from "./CartIcon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../redux/slice";
 
 export default function Navbar({ onClickUnmount }: any) {
     const [count, setCount] = useState(0)
@@ -12,9 +13,9 @@ export default function Navbar({ onClickUnmount }: any) {
     function decrementCount(): void {
         count <= 0 ? 0 : setCount(count - 1)
     }
-
+    const dispatch = useDispatch()
     const selector = useSelector((state : any ) => state.cart)
-    console.log(selector);
+   
     return (
         <nav className="bg-white-800 text-gray-700">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-4">
@@ -47,8 +48,11 @@ export default function Navbar({ onClickUnmount }: any) {
                     <button className="bg-gray-500 px-3 py-1 rounded">{count}</button>
                     <button className="px-4 py-1 bg-indigo-300 rounded text-white-400 hover:cursor-pointer" onClick={() => onClickUnmount()}>Unmount component</button>
                     <CartIcon value={selector.value}/>
+                    <button className="px-2 bg-red-500 rounded text-white hover:cursor-pointer"
+                    onClick={() => dispatch(clearCart())}
+                    >CLear Cart</button>
                 </div>
-            </div>
+            </div> 
         </nav>
     )
 }
