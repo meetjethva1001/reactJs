@@ -21,6 +21,7 @@ import UserDetailForm from "./components/UserDetailForm"
 import { FormProvider } from "./components/FormContextData"
 import UserLocationDetail from "./components/UserLocationDetail"
 import Product from "./components/Product"
+import Cart from "./components/Cart"
 
 
 function App() { 
@@ -116,6 +117,7 @@ function App() {
         <Route path="/user-detail" element={<UserDetailForm/>}/>
         <Route path="/user-location" element={<UserLocationDetail/>}/>
         <Route path="/product" element={<Product/>}/>
+        <Route path="/cart" element={<Cart/>}/>
       </Routes>
 
 

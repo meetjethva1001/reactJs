@@ -46,7 +46,7 @@ export default function Navbar({ onClickUnmount }: any) {
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => decrementCount()}>Dec -</button>
                     <button className="bg-gray-500 px-3 py-1 rounded">{count}</button>
                     <button className="px-4 py-1 bg-indigo-300 rounded text-white-400 hover:cursor-pointer" onClick={() => onClickUnmount()}>Unmount component</button>
-                    <CartIcon value={selector.products.length}/>
+                    <Link to={'/cart'}><CartIcon value={selector.products.length === 0 ? 0 : selector.products.length}/></Link>
                     <button className="px-2 bg-red-500 rounded text-white hover:cursor-pointer"
                     onClick={() => dispatch(clearCart())}
                     >CLear Cart</button>
