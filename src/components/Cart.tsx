@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeItem } from "../redux/slice";
+import { removeItem , increaseQuantity ,decreaseQuantity} from "../redux/slice";
 
 export default function Cart() {
-    
+
     const selector = useSelector((state: any) => state.cart)
     const dispatch = useDispatch()
 
@@ -39,11 +39,31 @@ export default function Cart() {
 
 
                                 <div className="flex items-center justify-between pt-2">
-                                    <span className="text-xl font-bold text-gray-900">${pro.price}</span>
+                                    <span className="text-xl font-bold text-gray-900">${pro.quantity <= 1 ? pro.price : (pro.price*pro.quantity).toFixed(2)}</span>
 
                                     <span className="text-xs font-medium px-2 py-1 rounded-full bg-green-100 text-green-700">
                                         {pro.availabilityStatus}
                                     </span>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <button
+                                        className="px-3 py-1 bg-gray-300 rounded-lg"
+                                        onClick={() => dispatch(decreaseQuantity(pro))}
+                                    >
+                                        -
+                                    </button>
+
+                                    <span className="font-semibold">
+                                        {pro.quantity || 1}
+                                    </span>
+
+                                    <button
+                                        className="px-3 py-1 bg-gray-300 rounded-lg"
+                                        onClick={() => dispatch(increaseQuantity(pro))}
+                                    >
+                                        +
+                                    </button>
                                 </div>
 
                                 <button className="w-full mt-3 bg-red-400 text-white py-2 rounded-xl text-sm font-medium hover:bg-red-500 transition hover:cursor-pointer"
