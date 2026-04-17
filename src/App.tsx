@@ -22,6 +22,8 @@ import { FormProvider } from "./components/FormContextData"
 import UserLocationDetail from "./components/UserLocationDetail"
 import Product from "./components/Product"
 import Cart from "./components/Cart"
+import LoginPage from "./components/LoginPage"
+import ProtectedRoutes from "./guards/ProtectedRoutes"
 
 
 function App() { 
@@ -116,8 +118,13 @@ function App() {
         <Route path="/show" element ={<ShowApiResponse/>}/>
         <Route path="/user-detail" element={<UserDetailForm/>}/>
         <Route path="/user-location" element={<UserLocationDetail/>}/>
-        <Route path="/product" element={<Product/>}/>
+        <Route path="/product" element={
+           <ProtectedRoutes>
+          <Product/>
+          </ProtectedRoutes>
+          }/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
       </Routes>
 
 
