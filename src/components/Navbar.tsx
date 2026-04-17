@@ -3,10 +3,19 @@ import { Link } from "react-router-dom"
 import CartIcon from "./CartIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../redux/slice";
+import {logout} from '../features/slice'
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ onClickUnmount }: any) {
+    const navigate = useNavigate()
     const [count, setCount] = useState(0)
+    const isAuth = useSelector((state : any )=> state.auth )
 
+    function logoutAction(){
+        dispatch(logout())
+        navigate("/login")
+    }
+  
     function incrementCount(): void {
         setCount(count + 1);
     }
@@ -14,7 +23,7 @@ export default function Navbar({ onClickUnmount }: any) {
         count <= 0 ? 0 : setCount(count - 1)
     }
     const dispatch = useDispatch()
-    const selector = useSelector((state : any ) => state.cart)
+    const selector = useSelector((state: any) => state.cart)
     return (
         <nav className="bg-white-800 text-gray-700">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-4">
@@ -40,18 +49,27 @@ export default function Navbar({ onClickUnmount }: any) {
                     <Link to="/product" className="hover:text-gray-400 transition-colors">
                         Shop
                     </Link>
+                    <Link to="/login" className="hover:text-gray-400 transition-colors">
+                        Login
+                    </Link>
                 </nav>
                 <div className="btns flex gap-5">
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => incrementCount()}>Inc +</button>
                     <button className="bg-blue-400 rounded px-3 py-1 cursor-pointer hover:bg-blue-500" onClick={() => decrementCount()}>Dec -</button>
                     <button className="bg-gray-500 px-3 py-1 rounded">{count}</button>
                     <button className="px-4 py-1 bg-indigo-300 rounded text-white-400 hover:cursor-pointer" onClick={() => onClickUnmount()}>Unmount component</button>
-                    <Link to={'/cart'}><CartIcon value={selector.products.length === 0 ? 0 : selector.products.length}/></Link>
+                    <Link to={'/cart'}><CartIcon value={selector.products.length === 0 ? 0 : selector.products.length} /></Link>
                     <button className="px-2 bg-red-500 rounded text-white hover:cursor-pointer"
-                    onClick={() => dispatch(clearCart())}
+                        onClick={() => dispatch(clearCart())}
                     >CLear Cart</button>
+                    {
+                        isAuth.isAuthenticated ? <button className="bg-red-500 px-3 py-1 text-white rounded hover:cursor-pointer"
+                        onClick={()=>logoutAction()}
+                        >Logout</button> : " "
+                    }
+                    
                 </div>
-            </div> 
+            </div>
         </nav>
     )
 }
